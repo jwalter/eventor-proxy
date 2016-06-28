@@ -7,17 +7,17 @@ var options = {
   "port": null,
   "path": "/api/organisation/610",
   "headers": {
-    "apikey": "",
     "cache-control": "no-cache"
   }
 };
 
-const PORT=8080; 
+const PORT=process.env.PORT; 
 
 function handleRequest(request, response) {
     if (request.url.startsWith('/api'))
     {
         options["path"] = request.url;
+        options.headers["ApiKey"] = request.headers["apikey"];
         var req = http.request(options, function (res) {
             var chunks = [];
 
@@ -42,7 +42,7 @@ function handleRequest(request, response) {
 
 var server = http.createServer(handleRequest);
 
-server.listen(PORT, function() {
-    console.log("Server listening on: http://localhost:%s", PORT);
+server.listen(process.env.PORT, process.env.IP, function() {
+    console.log("Server listening on: http://%s:%s", process.env.IP, process.env.PORT);
 });
 
