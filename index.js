@@ -11,7 +11,8 @@ var options = {
   }
 };
 
-const PORT=process.env.PORT; 
+const IP = process.env.IP || "localhost";
+const PORT = process.env.PORT || 8080;
 
 function handleRequest(request, response) {
     if (request.url.startsWith('/api'))
@@ -42,7 +43,7 @@ function handleRequest(request, response) {
 
 var server = http.createServer(handleRequest);
 
-server.listen(process.env.PORT, process.env.IP, function() {
-    console.log("Server listening on: http://%s:%s", process.env.IP, process.env.PORT);
+server.listen(PORT, IP, function() {
+    console.log("Server listening on: http://%s:%s", IP, PORT);
 });
 
