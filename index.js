@@ -15,10 +15,12 @@ const IP = process.env.IP || "localhost";
 const PORT = process.env.PORT || 8080;
 
 function handleRequest(request, response) {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Headers', 'apikey');
     if (request.url.startsWith('/api'))
     {
         options["path"] = request.url;
-        options.headers["ApiKey"] = request.headers["apikey"];
+        options.headers["ApiKey"] = request.headers["apikey"] || '';
         var req = http.request(options, function (res) {
             var chunks = [];
 
