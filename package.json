@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/jwalter/eventor-proxy#readme",
   "dependencies": {
-    "xml2json": "^0.9.1"
+    "xml2js": "^0.4.17"
   }
 }
